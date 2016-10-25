@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		//宿主对象location
+		console.log(location);
+
+		//当前地址
+		console.log(location.href);
+
+		//当前地址的源
+		console.log(location.origin);
+
+		//当前地址的协议
+		console.log(location.protocol);
+
+		//当前地址的主机名
+		console.log(location.host,location.hostname);
+
+		//当前地址的路由
+		console.log(location.pathname);
+
+		//前端通过location使用get方式发送给后端的参数		
+		//? 开始传参
+		//=赋值参数， =前后是key-value
+		//&连接参数
+		console.log(location.search);
+
+		//当前地址的哈希
+		console.log(location.hash);
+	</script>
+</body>
+</html>

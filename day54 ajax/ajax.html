@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Ajax</title>
+</head>
+<body>
+	<!-- 同步提交表单 -->
+	<!-- get请求 -->
+	<form  action="http://www.ikindness.cn/api/test/get" > 
+		<p name="pa"></p> <!-- 其他没有value属性的标签内的所有value都不能被提交 -->
+		<input name="len" />
+		<select name="haha" >
+			<option value="01">一年级</option>
+			<option value="02">二年级</option>
+			<option value="03">三年级</option>
+		</select>	
+		<input type="submit" />
+	</form>
+
+	<!-- post请求 -->
+	<form method="post" action="http://www.ikindness.cn/api/test/post" target="_blank"> 
+		<p name="pa"></p> <!-- 其他没有value属性的标签内的所有value都不能被提交 -->
+		<input name="haha" />
+		<select name="ahaha" >
+			<option value="01a">一年级</option>
+			<option value="02b">二年级</option>
+			<option value="03c">三年级</option>
+		</select>	
+		<input type="submit" />
+	</form>
+	<input name="test"/> <!-- 表单内部才会被提交 -->
+	<form method="post" action="http://www.ikindness.cn/api/test/signUp" > 
+	</br>
+		姓名：<input name="password" />
+		电话（请输入电话后六位）：<input name="code" />
+		学号(请输入11位)：<input name="tel" />
+		<select name="ahaha" >
+			<option value="01a">一年级</option>
+			<option value="02b">二年级</option>
+			<option value="03c">三年级</option>
+		</select>	
+		<input type="submit" />
+	</form>	
+
+	<script type="text/javascript">
+		//宿主对象 XMLHttpRequest
+		var xhr = new XMLHttpRequest();
+		//readystate
+		//0 未打开请求
+		//1 请求打开
+		//2 请求发送成功
+		//3 服务端成功接收请求
+		//4 服务端响应成功
+
+		function queryString(data){
+			var str = "";
+		}
+		xhr.onreadystatechange = function(){
+			console.log(["请求为发送","请求打开","请求发送成功","服务端成功接收请求","服务端响应成功"][xhr.readyState]);
+			if(xhr.readyState === 4 && xhr.status === 200){
+				console.log(JSON.parse(xhr.responseText));
+			}
+			console.log(xhr.readyState,xhr.status,xhr.responseText);
+		
+		};
+
+		//打开请求
+		xhr.open("get","http://www.ikindness.cn/api/test/get?a=233",1);//get
+		xhr.open("post","http://www.ikindness.cn/api/test/post",1);//post
+		console.log(xhr.status);
+		//设置请求头
+		xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");//post
+		//发送请求
+		xhr.send(false);//get
+		// xhr.send("a=2");//post
+		// console.log(6);
+		// console.log(66);
+		// console.log(666);
+		// console.log(66);
+		// console.log(6);
+		ajax({
+			type : "get",
+			url :"http://www.ikindness.cn/api/test/get",
+			data : {
+				a : 233
+			},
+			dataType : "json",
+			async : 1,
+			sucess : function(data){
+				console.log(data);
+			}
+		});
+	</script>
+
+</body>
+</html>
